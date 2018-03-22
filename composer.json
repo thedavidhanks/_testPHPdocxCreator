@@ -1,0 +1,7 @@
+{
+    "require": {
+        "monolog/monolog": "^1.23",
+        "phpoffice/phpword": "^0.14.0",
+        "twbs/bootstrap": "^4.0"
+    }
+}
