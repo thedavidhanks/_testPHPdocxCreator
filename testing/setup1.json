@@ -1,0 +1,95 @@
+    {     
+        "author": "David Hanks",
+        "company" : "OTC Solutions",
+        "docDescription" : "",
+        "lastModifier" : "",
+        "reportType" : "Shear Verification Package",
+        "reportSubType" : "30 CFR §250.732 (a),(b)",
+        "clientFullLegal" : "A Happy Client, Inc.",
+        "clientShortend" : "OES",
+        "well": {
+            "name" : "SS001018398",
+            "location" : "Alpha Bravo 123",
+            "pressure" : "12345"
+        },
+        "BOP": {
+            "MOPFLPS" : "200",
+            "OEM": "Cameron",
+            "closingArea" : "224.5",
+            "closingRatio" : "17.9",
+            "model" : "Type U, 13-3M/10M, SB",
+            "trArea" : "0",
+            "supplyPressure" : "3000",
+            "operatorRatedPressure" : "3000"
+        },
+        "docNumber": "SBS1_COX_180307_SVP",
+        "docRev": 0,
+        "exceptions": [1,2],
+        "calculationMethods": [1],
+        "revisions" : {
+            "00" : {
+                "date" : "2016-01-01",
+                "descShort" : "Initial Release",
+                "descLong" : "Initial Release",
+                "preparedBy" : "David Hanks",
+                "checkedBy" : "Steve Ronan",
+                "approvedBy" : "David Hanks"
+            },
+            "01" : {
+                    "date" : "2016-02-20",
+                    "descShort" : "Fixed it",
+                    "descLong" : "Something was really, really wrong.  It had to go.  It's all better now.",
+                    "preparedBy" : "David Hanks",
+                    "checkedBy" : "Steve Ronan",
+                    "approvedBy" : "David Hanks"
+            },
+            "02": {
+                    "date" : "2016-02-20",
+                    "descShort" : "Fixed it",
+                    "descLong" : "Something was kinda wrong.  We tweaked it a bit.  It's all better now.",
+                    "preparedBy" : "This Guy",
+                    "checkedBy" : "That Guy",
+                    "approvedBy" : "Boss Man"
+            }
+        },
+        "rig" : {
+            "name" : "Jolly Rodger",
+            "location" : "surface"
+        },
+        "tubulars" : {
+            "pipeXXXYY": {
+                "selectedMethod" : "Cameron",
+                "strengthType" : "grade",
+                "grade" : "E75",
+                "evalStrength" : "105000",
+                "ppf" : "13.87",
+                "testPipe": false,
+                "type": "pipe",
+                "diameter": "5",
+                "wall": ".25",
+                "pipeNo" : "1",
+                "C3" : "0.33",
+                "CamForce" : "480596",
+                "OperatingPressure" : "2140.73942",
+                "area" : "3.73", 
+                "brkStrength" : "279750"
+            },
+            "pipeZZYY": {
+                "selectedMethod" : "Cameron",
+                "strengthType" : "grade",
+                "grade" : "C90",
+                "evalStrength" : "105000",
+                "ppf" : "15.5",
+                "testPipe": true,
+                "type": "pipe",
+                "diameter": "6.625",
+                "wall": ".361",
+                "pipeNo" : "0",
+                "C3" : "0.33",
+                "CamForce" : "500596",
+                "OperatingPressure" : "3540",
+                "area" : "4.2", 
+                "brkStrength" : "309750" 
+            }
+        }
+    }

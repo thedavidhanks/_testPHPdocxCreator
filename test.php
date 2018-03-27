@@ -4,55 +4,87 @@ require_once 'vendor/autoload.php';
 // Creating the new document...
 $phpWord = new \PhpOffice\PhpWord\PhpWord();
 
-/* Note: any element you append to a document must reside inside of a Section. */
-
-// Adding an empty Section to the document...
+// Define styles
+$fontStyleName = 'myOwnStyle';
+$phpWord->addFontStyle($fontStyleName, array('color' => 'FF0000'));
+$paragraphStyleName = 'P-Style';
+$phpWord->addParagraphStyle($paragraphStyleName, array('spaceAfter' => 95));
+$multilevelNumberingStyleName = 'multilevel';
+$phpWord->addNumberingStyle(
+    $multilevelNumberingStyleName,
+    array(
+        'type'   => 'multilevel',
+        'levels' => array(
+            array('format' => 'decimal', 'text' => '%1.', 'left' => 360, 'hanging' => 360, 'tabPos' => 360),
+            array('format' => 'upperLetter', 'text' => '%2.', 'left' => 720, 'hanging' => 360, 'tabPos' => 720),
+        ),
+    )
+);
+$predefinedMultilevelStyle = array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_NUMBER_NESTED);
+// New section
 $section = $phpWord->addSection();
-// Adding Text element to the Section having font styled by default...
-$section->addText(
-    '"Learn from yesterday, live for today, hope for tomorrow. '
-        . 'The important thing is not to stop questioning." '
-        . '(Albert Einstein)'
+// Lists
+$section->addText('Multilevel list.');
+$section->addListItem('List Item I', 0, null, $multilevelNumberingStyleName);
+$section->addListItem('List Item I.a', 1, null, $multilevelNumberingStyleName);
+$section->addListItem('List Item I.b', 1, null, $multilevelNumberingStyleName);
+$section->addListItem('List Item II', 0, null, $multilevelNumberingStyleName);
+$section->addListItem('List Item II.a', 1, null, $multilevelNumberingStyleName);
+$section->addListItem('List Item III', 0, null, $multilevelNumberingStyleName);
+$section->addTextBreak(2);
+$section->addText('Basic simple bulleted list.');
+$section->addListItem('List Item 1');
+$section->addListItem('List Item 2');
+$section->addListItem('List Item 3');
+$section->addTextBreak(2);
+$section->addText('Continue from multilevel list above.');
+$section->addListItem('List Item IV', 0, null, $multilevelNumberingStyleName);
+$section->addListItem('List Item IV.a', 1, null, $multilevelNumberingStyleName);
+$section->addTextBreak(2);
+$section->addText('Multilevel predefined list.');
+$section->addListItem('List Item 1', 0, $fontStyleName, $predefinedMultilevelStyle, $paragraphStyleName);
+$section->addListItem('List Item 2', 0, $fontStyleName, $predefinedMultilevelStyle, $paragraphStyleName);
+$section->addListItem('List Item 3', 1, $fontStyleName, $predefinedMultilevelStyle, $paragraphStyleName);
+$section->addListItem('List Item 4', 1, $fontStyleName, $predefinedMultilevelStyle, $paragraphStyleName);
+$section->addListItem('List Item 5', 2, $fontStyleName, $predefinedMultilevelStyle, $paragraphStyleName);
+$section->addListItem('List Item 6', 1, $fontStyleName, $predefinedMultilevelStyle, $paragraphStyleName);
+$section->addListItem('List Item 7', 0, $fontStyleName, $predefinedMultilevelStyle, $paragraphStyleName);
+$section->addTextBreak(2);
+$section->addText('List with inline formatting.');
+$listItemRun = $section->addListItemRun();
+$listItemRun->addText('List item 1');
+$listItemRun->addText(' in bold', array('bold' => true));
+$listItemRun = $section->addListItemRun();
+$listItemRun->addText('List item 2');
+$listItemRun->addText(' in italic', array('italic' => true));
+//$footnote = $listItemRun->addFootnote();
+//$footnote->addText('this is a footnote on a list item');
+$listItemRun = $section->addListItemRun();
+$listItemRun->addText('List item 3');
+$listItemRun->addText(' underlined', array('underline' => 'dash'));
+$section->addTextBreak(2);
+// Numbered heading
+$headingNumberingStyleName = 'headingNumbering';
+$phpWord->addNumberingStyle(
+    $headingNumberingStyleName,
+    array('type'   => 'multilevel',
+          'levels' => array(
+              array('pStyle' => 'Heading1', 'format' => 'decimal', 'text' => '%1'),
+              array('pStyle' => 'Heading2', 'format' => 'decimal', 'text' => '%1.%2'),
+              array('pStyle' => 'Heading3', 'format' => 'decimal', 'text' => '%1.%2.%3'),
+          ),
+    )
 );
+$phpWord->addTitleStyle(1, array('size' => 16), array('numStyle' => $headingNumberingStyleName, 'numLevel' => 0));
+$phpWord->addTitleStyle(2, array('size' => 14), array('numStyle' => $headingNumberingStyleName, 'numLevel' => 1));
+$phpWord->addTitleStyle(3, array('size' => 12), array('numStyle' => $headingNumberingStyleName, 'numLevel' => 2));
+$section->addTitle('Heading 1', 1);
+$section->addTitle('Heading 2', 2);
+$section->addTitle('Heading 3', 3);
+// Save file
+//echo write($phpWord, basename(__FILE__, '.php'), $writers);
 
-/*
- * Note: it's possible to customize font style of the Text element you add in three ways:
- * - inline;
- * - using named font style (new font style object will be implicitly created);
- * - using explicitly created font style object.
- */
-
-// Adding Text element with font customized inline...
-$section->addText(
-    '"Great achievement is usually born of great sacrifice, '
-        . 'and is never the result of selfishness." '
-        . '(Napoleon Hill)',
-    array('name' => 'Tahoma', 'size' => 10)
-);
-
-// Adding Text element with font customized using named font style...
-$fontStyleName = 'oneUserDefinedStyle';
-$phpWord->addFontStyle(
-    $fontStyleName,
-    array('name' => 'Tahoma', 'size' => 10, 'color' => '1B2232', 'bold' => true)
-);
-$section->addText(
-    '"The greatest accomplishment is not in never falling, '
-        . 'but in rising again after you fall." '
-        . '(Vince Lombardi)',
-    $fontStyleName
-);
-
-// Adding Text element with font customized using explicitly created font style object...
-$fontStyle = new \PhpOffice\PhpWord\Style\Font();
-$fontStyle->setBold(true);
-$fontStyle->setName('Tahoma');
-$fontStyle->setSize(13);
-$myTextElement = $section->addText('"Believe you can and you\'re halfway there." (Theodor Roosevelt)');
-$myTextElement->setFontStyle($fontStyle);
-
-// Saving the document as OOXML file...
 $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-$objWriter->save('helloWorld.docx');
+$objWriter->save('output/lists.docx');
 
 ?>
