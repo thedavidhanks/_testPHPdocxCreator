@@ -73,7 +73,7 @@ $phpWord->addFontStyle('fsH1', $fsH1config);
 
 //Paragraphs
 $phpWord->addParagraphStyle('psNormal', ['alignment' => 'both']);
-$psCenteredConfig = array('alignment' => 'center');
+$psCenteredConfig = ['alignment' => 'center'];
 $phpWord->addParagraphStyle('psCentered',$psCenteredConfig );
 $phpWord->addParagraphStyle('psCenterTight', [
     'alignment' => 'center',
@@ -100,22 +100,20 @@ $phpWord->addParagraphStyle('psCenterTable3', [
     'spaceAfter' => 3,
     'spaceBefore' => 3]
 );
-
-$styleParaTitle = array(
+$styleParaTitle = [
         'alignment' => 'right',
         'spaceAfter' => 2,
         'spaceBefore' => 2
-);
-
-$styleParaSubTitle = array(
+];
+$styleParaSubTitle = [
         'alignment' => 'right',
         'spaceAfter' => 0,
         'spaceBefore' => 0
-);
-$styleParaRevs = array(
+];
+$styleParaRevs = [
         'basedOn' => 'psNormal',
         'alignment' => 'left'
-);
+];
 
 //Sections
 $styleSectionDefault = [
@@ -162,17 +160,26 @@ $phpWord->addTableStyle('tsPlainNoBorder', [
 );
 $phpWord->addTableStyle('tsFooter', ['cellMargin' => 0]);
 
-//Row Styles
-$rsFirstRowConfig = ['valign' => 'center', 'bgColor' => '3A3B3D'];
+//Row Style
+$rsHeight =Converter::inchToTwip(.3);
+
 //Cell Styles
 $vAlignCell = ['valign' => 'center'];
-$csBottomBorder = ['borderBottomColor'=>'000000'];
+$csBottomBorder = ['borderBottomColor'=>'000000', 'borderBottomSize' => 1];
+$csVbottomGrey = ['valign' => 'bottom', 'bgColor' => '3A3B3D'];
 
 //Titles
 $phpWord->addTitleStyle(1,$fsH1config, $psCenteredConfig);
 
 //Numbering
 $predefinedMultilevelStyle = ['listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_NUMBER];
+$phpWord->addNumberingStyle('newList', [
+	'type' => 'singleLevel',
+	'levels' => [
+		['format' => 'decimal', 'text' => '%1.', 'left' => 360, 'hanging' => 360, 'tabPos' => 360]
+	]
+]
+);
 
 /*
  * BEGIN DOC CREATION
@@ -201,8 +208,8 @@ $sectionTitlePg->addText($reportData->reportType, 'fsTitle', $styleParaTitle);
 $sectionTitlePg->addText($reportData->reportSubType, 'fsSubTitle', $styleParaSubTitle);
 $sectionTitlePg->addTextBreak(1);
 $sectionTitlePg->addText($reportData->clientFullLegal, 'fsTitle', $styleParaTitle);
-$sectionTitlePg->addText('[Rig]', 'fsSubTitle', $styleParaSubTitle);
-$sectionTitlePg->addText('[Well Name]', 'fsSubTitle', $styleParaSubTitle);
+$sectionTitlePg->addText($reportData->rig->name, 'fsSubTitle', $styleParaSubTitle);
+$sectionTitlePg->addText($reportData->well->name, 'fsSubTitle', $styleParaSubTitle);
 $sectionTitlePg->addTextBreak(1);
 $sectionTitlePg->addText($reportData->docNumber, 'fsSubTitle', $styleParaSubTitle);
 $sectionTitlePg->addText($revisionNumber, 'fsSubTitle', $styleParaSubTitle);
@@ -242,7 +249,7 @@ $footerTable->addCell(Converter::inchToTwip(4.15))->addText("PROPRIETARY/CONFIDE
 $sectionRevPage->addTextBreak(1, 'fsNormal');
 $sectionRevPage->addText('REVISION HISTORY', 'fsH1', $styleParaRevs);
 $tableRevHistory = $sectionRevPage->addTable('tsPlain');
-$tableRevHistory->addRow(Converter::inchToTwip(.3));
+$tableRevHistory->addRow($rsHeight);
 $tableRevHistory->addCell(Converter::inchToTwip(.56), $vAlignCell)->addText("REV", 'fsSmallBold', 'psCenterTight');
 $tableRevHistory->addCell(Converter::inchToTwip(.94), $vAlignCell)->addText("Date of Issue", 'fsSmallBold', 'psCenterTight');
 $tableRevHistory->addCell(Converter::inchToTwip(2), $vAlignCell)->addText("Reason for Issue", 'fsSmallBold', 'psLeftTight');
@@ -250,7 +257,7 @@ $tableRevHistory->addCell(Converter::inchToTwip(1.17), $vAlignCell)->addText("Pr
 $tableRevHistory->addCell(Converter::inchToTwip(1.17), $vAlignCell)->addText("Checked", 'fsSmallBold', 'psCenterTight');
 $tableRevHistory->addCell(Converter::inchToTwip(1.17), $vAlignCell)->addText("Approved", 'fsSmallBold', 'psCenterTight');
 foreach($reportData->revisions as $revNokey => $value){
-        $tableRevHistory->addRow(Converter::inchToTwip(.3));
+        $tableRevHistory->addRow($rsHeight);
         $tableRevHistory->addCell(null, $vAlignCell)->addText($revNokey, 'fsSize9', 'psCenterTight');
         $tableRevHistory->addCell(null, $vAlignCell)->addText($reportData->revisions->$revNokey->date, 'fsSize9', 'psCenterTight');
         $tableRevHistory->addCell(null, $vAlignCell)->addText($reportData->revisions->$revNokey->descShort, 'fsSize9', 'psLeftTight');
@@ -268,11 +275,11 @@ $sectionRevPage->addTextBreak(2, 'fsNormal');
 //CHANGE DESCRIPTION
 $sectionRevPage->addText('CHANGE DESCRIPTION', 'fsH1', $styleParaRevs);
 $tableChangeDesc = $sectionRevPage->addTable('tsPlain');
-$tableChangeDesc->addRow(Converter::inchToTwip(.3));
+$tableChangeDesc->addRow($rsHeight);
 $tableChangeDesc->addCell(Converter::inchToTwip(.56), $vAlignCell)->addText("REV", 'fsSmallBold', 'psCenterTight');
 $tableChangeDesc->addCell(Converter::inchToTwip(6.44), $vAlignCell)->addText("Change Description", 'fsSmallBold', 'psLeftTight');
 foreach($reportData->revisions as $revNokey => $value){
-        $tableChangeDesc->addRow(Converter::inchToTwip(.3));
+        $tableChangeDesc->addRow($rsHeight);
         $tableChangeDesc->addCell(null,$vAlignCell)->addText($revNokey, 'fsSize9', 'psCenterTight');
         $tableChangeDesc->addCell(null,$vAlignCell)->addText($reportData->revisions->$revNokey->descLong, 'fsSize9', 'psLeftTight');
 }
