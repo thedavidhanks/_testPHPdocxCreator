@@ -1,5 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
+require 'sections/SVPfunctions.php';
 use PhpOffice\PhpWord\Shared\Converter;
 use PhpOffice\PhpWord\Style\Paper;
 
@@ -36,6 +37,14 @@ $phpWord->addFontStyle('fsNormal',[
 $phpWord->addFontStyle('fsNormalBold',[
         'basedOn' => 'fsNormal',
         'bold' => TRUE
+]);
+$phpWord->addFontStyle('fsNormalSub',[
+        'basedOn' => 'fsNormal',
+        'subScript' => TRUE
+]);
+$phpWord->addFontStyle('fsNormalSup',[
+        'basedOn' => 'fsNormal',
+        'superScript' => TRUE
 ]);
 $phpWord->addFontStyle('fsTitle',[
         'name' => 'Arial',
@@ -167,6 +176,7 @@ $rsHeight =Converter::inchToTwip(.3);
 $vAlignCell = ['valign' => 'center'];
 $csBottomBorder = ['borderBottomColor'=>'000000', 'borderBottomSize' => 1];
 $csVbottomGrey = ['valign' => 'bottom', 'bgColor' => '3A3B3D'];
+$csGrey = ['bgColor' => 'BFBFBF'];
 
 //Titles
 $phpWord->addTitleStyle(1,$fsH1config, $psCenteredConfig);
@@ -234,7 +244,7 @@ $sectionTitlePg->addImage(
 $sectionRevPage=$phpWord->addSection($styleSectionDefault);
 //HEADER
 $header=$sectionRevPage->addHeader();
-require 'sections/_headerFooter.php';
+generateHeader($header, $reportData, $revisionNumber);
 
 //FOOTER
 $footer=$sectionRevPage->addFooter();
@@ -290,8 +300,9 @@ $sectionRevPage->addText('TABLE OF CONTENTS', 'fsH1', $styleParaRevs);
 //Main Section
 $sectionMainContent=$phpWord->addSection($styleSectionDefault);
 //HEADER
-$header=$sectionMainContent->addHeader();
-require 'sections/_headerFooter.php';
+$headerMaincontent=$sectionMainContent->addHeader();
+generateHeader($headerMaincontent, $reportData, $revisionNumber);
+
 
 //FOOTER
 $footerMain=$sectionMainContent->addFooter();
@@ -317,6 +328,7 @@ $sectionMainContent->addPageBreak();
 
 //Hydrostatic Effects
 $sectionMainContent->addTitle('Hydrostatic Effects', 1);
+require_once 'sections/4-hydrostaticEffects.php';
 $sectionMainContent->addPageBreak();
 
 //Pipe Detail Calculations
