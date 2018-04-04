@@ -51,7 +51,7 @@ $tableHSeffects->addCell(null,$vAlignCell)->addText($reportData->BOP->closingRat
 $tableHSeffects->addCell(null, $csGrey);
 
 //BOP Calculations for Subsea BOP
-if($reportData->rig->location == 'subsea'){
+if($reportData->Rig->location == 'subsea'){
     //Tailrod Area
     $tableHSeffects->addRow($rsHeight);
     $tableHSeffects->addCell(null, $vAlignCell)->addText("Tail Rod Area",'fsSize9', 'psLeftTight');
@@ -88,3 +88,61 @@ if($reportData->rig->location == 'subsea'){
 
 $tableHSeffects->addRow($rsHeight);
 $tableHSeffects->addCell(null,$csSpanRow)->addText("Wellbore Pressure", 'fsNormalBold', 'psLeftTight');
+$tableHSeffects->addRow($rsHeight);
+$wellPressureName = $reportData->Rig->location === 'subsea' ? "Maximum Anticipated Wellhead Pressure @ BOP" : "Maximum Anticipated Surface Pressure @ BOP";
+$wellPressureShortName = $reportData->Rig->location === 'subsea' ? "MAWHP" : "MASP";
+$tableHSeffects->addCell(null,$vAlignCell)->addText($wellPressureName, 'fsSize9', 'psLeftTight');
+$tableHSeffects->addCell(null,$vAlignCell)->addText($wellPressureShortName, 'fsSize9', 'psCenterTight');
+$tableHSeffects->addCell(null, $csGrey);
+$tableHSeffects->addCell(null, $vAlignCell)->addText($reportData->Well->pressure, 'fsSize9', 'psCenterTight');
+$tableHSeffects->addCell(null, $vAlignCell)->addText("psi", 'fsSize9', 'psCenterTight');
+
+//BOP Calculations for Subsea BOP
+if($reportData->Rig->location == 'subsea'){
+	//Mud weight
+	
+	//Height of Riser
+	
+	//Water Depth
+	
+	//Mud Pressure @ depth
+	
+	//Dominate wellbore pressure
+	
+	//Pi, Increased Shear Pressure
+}else{
+	$tableHSeffects->addRow($rsHeight);
+	//Pi, Increased Shear Pressure due to MASP
+    $tableHSeffects->addCell(null, $vAlignCell)->addText("Increased Shear Pressure due to Pressure in Wellbore",'fsSize9', 'psLeftTight');
+    addTermCell($tableHSeffects, 'P', 'i');
+    $equationPi = $tableHSeffects->addCell(null, $vAlignCell)->addTextRun('psLeftTight');
+    $equationPi->addText('MASP / C');
+    $equationPi->addText('R', 'fsNormalSub');
+    $tableHSeffects->addCell(null,$vAlignCell)->addText($reportData->Well->closingPressureAdjustment, 'fsSize9', 'psCenterTight');
+    $tableHSeffects->addCell(null, $vAlignCell)->addText("psi", 'fsSize9', 'psCenterTight');
+}
+
+//BOP Calculations for Subsea BOP
+if($reportData->Rig->location === 'subsea'){
+	//Control Fluid Pressure Gradient
+	//Height of HPU
+	//Hieght of BOP
+	// Seawater pressure gradient
+	//Pressure due to Hydrostatic Head of Control Fluid
+	//Pressure due to Hydrostatic Head of Seawater
+	//Opening Force due to Seawater Head on Operator
+	//Closing Force Due to Control Fluid Head on Operator
+	//Closing Force due to Seawater head on Tailrod
+	//Change in closing Pressure due to Hydrostatics
+}
+$tableHSeffects->addRow($rsHeight);
+$tableHSeffects->addCell(null,$csSpanRow)->addText("Minimum Sealing Pressure", 'fsNormalBold', 'psLeftTight');
+//Min. Sealing Pressure
+$tableHSeffects->addRow($rsHeight);
+$tableHSeffects->addCell(null, $vAlignCell)->addText("Minimum Sealing Pressure",'fsSize9', 'psLeftTight');
+addTermCell($tableHSeffects, 'P', 'SEAL');
+$equationMSP = $tableHSeffects->addCell(null, $vAlignCell)->addTextRun('psLeftTight');
+$equationMSP->addText('MOPFLPS + P');
+$equationMSP->addText('i', 'fsNormalSub');
+$tableHSeffects->addCell(null,$vAlignCell)->addText($reportData->Well->minSealPressure, 'fsSize9', 'psCenterTight');
+$tableHSeffects->addCell(null, $vAlignCell)->addText("psi", 'fsSize9', 'psCenterTight');

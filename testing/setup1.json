@@ -7,11 +7,13 @@
         "reportSubType" : "30 CFR §250.732 (a),(b)",
         "clientFullLegal" : "A Happy Client, Inc.",
         "clientShortend" : "OES",
-        "well": {
+        "Well": {
             "name" : "SS001018398",
             "location" : "Alpha Bravo 123",
             "pressure" : "12345",
-			"waterDepth" : "11,200"
+			"waterDepth" : "11,200",
+			"closingPressureAdjustment": 230,
+			"minSealPressure" : 430
         },
         "BOP": {
             "MOPFLPS" : "200",
@@ -54,7 +56,7 @@
                     "approvedBy" : "Boss Man"
             }
         },
-        "rig" : {
+        "Rig" : {
             "name" : "Jolly Rodger",
             "location" : "surface"
         },
@@ -73,7 +75,7 @@
                 "type": "pipe",
                 "diameter": "5",
                 "wall": ".25",
-                "pipeNo" : "1",
+                "pipeNo" : 1,
                 "C3" : "0.33",
                 "CamForce" : "480596",
                 "OperatingPressure" : "2140.73942",
@@ -90,7 +92,7 @@
                 "type": "pipe",
                 "diameter": "6.625",
                 "wall": ".361",
-                "pipeNo" : "0",
+                "pipeNo" : 0,
                 "C3" : "0.33",
                 "CamForce" : "500596",
                 "OperatingPressure" : "3540",
@@ -109,7 +111,7 @@
                 "type": "pipe",
                 "diameter": "5.5",
                 "wall": ".361",
-                "pipeNo" : "3",
+                "pipeNo" : 3,
                 "C3" : "0.33",
                 "CamForce" : "500596",
                 "OperatingPressure" : "3540",
@@ -126,7 +128,7 @@
                 "type": "pipe",
                 "diameter": "3.5",
                 "wall": ".25",
-                "pipeNo" : "2",
+                "pipeNo" : 2,
                 "C3" : "0.33",
                 "CamForce" : "480596",
                 "OperatingPressure" : "2140.73942",

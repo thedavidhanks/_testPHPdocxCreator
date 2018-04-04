@@ -21,7 +21,6 @@ function addPipeToSummaryTable($table, $pipeValues =[],$grey = FALSE, $test = FA
 		$adjActualShearPressure = null;
 		$cellConfigTest = ['valign' => 'center', 'bgColor' => '808080'];
 	}
-	
 	$table->addRow($rsHeight); 
 	$table->addCell(null,$cellConfig)->addText($pipeNo, 'fsNormal', 'psCenterTable3');
 	$table->addCell(null,$cellConfig)->addText($pipeValues[1], 'fsNormal', 'psCenterTable3');

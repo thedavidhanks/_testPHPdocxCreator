@@ -30,9 +30,9 @@ $textShearLetter2 = $sectionMainContent->addTextRun('psNormal');
 $textShearLetter2->addText("Please find the attached shear verification calculations and related documents for ");
 $textShearLetter2->addText($reportData->clientFullLegal,'fsNormalBold');
 $textShearLetter2->addText(" on the ");
-$textShearLetter2->addText($reportData->rig->name,'fsNormalBold');
+$textShearLetter2->addText($reportData->Rig->name,'fsNormalBold');
 $textShearLetter2->addText(" for the ");
-$textShearLetter2->addText($reportData->well->name,'fsNormalBold');
+$textShearLetter2->addText($reportData->Well->name,'fsNormalBold');
 $textShearLetter2->addText(" well.  The calculations were carried out using ");
 $shearCalculationMethod = $reportData->calculationMethods;  //1 = "the Distortion Energy Theory; 2 = "the methods described by BSEE TAP 463"; 3 = "the methods described by Cameron EB 702D"
 if(!empty($shearCalculationMethod)){
@@ -58,7 +58,7 @@ if(!empty($shearCalculationMethod)){
         $x++;
     }
 }
-if($reportData->rig->location == "subsea"){$maspMAWHPlong = "Maximum Allowable Wellhead Pressure"; $maspMAWHP = "MAWHP";}
+if($reportData->Rig->location == "subsea"){$maspMAWHPlong = "Maximum Allowable Wellhead Pressure"; $maspMAWHP = "MAWHP";}
 else{$maspMAWHPlong = "Maximum Anticipated Surface Pressure"; $maspMAWHP = "MASP";}
 $textShearLetter2->addText(". Background equations used for the calculations are shown on each table. Based on the client supplied input data and OTC Solutions shear calculations, the most rigid pipe to be used in the well has been verified to require less shear force when compared to actual shear data obtained for the same model BOP shearing equal or more rigid grade pipe. Shear test report provided within. OTC Solutions has used the submitted $maspMAWHPlong ($maspMAWHP) for the calculations and considers this verification valid for any lower $maspMAWHP values. ");
 $textShearLetter2->addTextBreak();
