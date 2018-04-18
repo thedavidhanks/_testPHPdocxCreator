@@ -15,10 +15,10 @@ $tableWellData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText("Well L
 $tableWellData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText($reportData->Well->location, 'fsNormal', 'psLeftTable3');
 $tableWellData->addRow($rsHeight);
 $tableWellData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText("Water Depth, Hsw (ft)", 'fsNormal', 'psLeftTable3');
-$tableWellData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText($reportData->Well->waterDepth, 'fsNormal', 'psLeftTable3');
+$tableWellData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText(goodNumberToString($reportData->Well->waterDepth), 'fsNormal', 'psLeftTable3');
 $tableWellData->addRow($rsHeight);
 $tableWellData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText("Maximum Anticipated Surface Pressure, MASP (psi)", 'fsNormal', 'psLeftTable3');
-$tableWellData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText($reportData->Well->pressure, 'fsNormal', 'psLeftTable3');
+$tableWellData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText(goodNumberToString($reportData->Well->pressure), 'fsNormal', 'psLeftTable3');
 $sectionMainContent->addTextBreak(1,'fsNormal');
 //Shear Ram
 $tableShearRamData = $sectionMainContent->addTable('tsPlain');
@@ -32,16 +32,16 @@ $tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText("Ra
 $tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText($BOP->model, 'fsNormal', 'psLeftTable3');
 $tableShearRamData->addRow($rsHeight);
 $tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText("Supply Pressure, Ps (psi)", 'fsNormal', 'psLeftTable3');
-$tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText($BOP->supplyPressure, 'fsNormal', 'psLeftTable3');
+$tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText(goodNumberToString($BOP->supplyPressure), 'fsNormal', 'psLeftTable3');
 $tableShearRamData->addRow($rsHeight);
 $tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText("Operator Rated Pressure, Ps (psi)", 'fsNormal', 'psLeftTable3');
-$tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText($BOP->operatorRatedPressure, 'fsNormal', 'psLeftTable3');
+$tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText(goodNumberToString($BOP->operatorRatedPressure), 'fsNormal', 'psLeftTable3');
 $tableShearRamData->addRow($rsHeight);
 $tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText("Shear Operator Closing Area, Ac (in2)", 'fsNormal', 'psLeftTable3');
-$tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText($BOP->closingArea, 'fsNormal', 'psLeftTable3');
+$tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText(goodNumberToString($BOP->closingArea,2), 'fsNormal', 'psLeftTable3');
 $tableShearRamData->addRow($rsHeight);
 $tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText("Shear Operator Closing Ratio, Cr", 'fsNormal', 'psLeftTable3');
-$tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText($BOP->closingRatio, 'fsNormal', 'psLeftTable3');
+$tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText(goodNumberToString($BOP->closingRatio,2), 'fsNormal', 'psLeftTable3');
 $tableShearRamData->addRow($rsHeight);
 $tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText("Minimum Operating Pressure for Low Pressure Seal, MOPFLPS (psi)", 'fsNormal', 'psLeftTable3');
-$tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText($BOP->MOPFLPS, 'fsNormal', 'psLeftTable3');
+$tableShearRamData->addCell(Converter::inchtotwip(3.5),$vAlignCell)->addText(goodNumberToString($BOP->MOPFLPS), 'fsNormal', 'psLeftTable3');

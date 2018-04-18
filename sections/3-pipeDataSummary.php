@@ -4,6 +4,7 @@ use PhpOffice\PhpWord\Shared\Converter;
 
 function addPipeToSummaryTable($table, $pipeValues =[],$grey = FALSE, $test = FALSE){
 	global $rsHeight;
+        $maxCalcShear = goodNumberToString($pipeValues[6]);
 	// $pipeValues[0] - Pipe number (0 for test)
 	// $pipeValues[8] - actual shear pressure;
 	// $pipeValues[9] - adjusted actual shear pressure; 
@@ -12,8 +13,8 @@ function addPipeToSummaryTable($table, $pipeValues =[],$grey = FALSE, $test = FA
 	if($test){
 		$cellConfig = array_merge($cellConfig,['borderBottomSize' => 10] );
 		$pipeNo = "TEST";
-		$acutalShearPressure = $pipeValues[8];
-		$adjActualShearPressure = $pipeValues[9];
+		$acutalShearPressure = goodNumberToString($pipeValues[8]);
+		$adjActualShearPressure = goodNumberToString($pipeValues[9]);
 		$cellConfigTest = $cellConfig;
 	}else{
 		$pipeNo = $pipeValues[0];
@@ -24,11 +25,11 @@ function addPipeToSummaryTable($table, $pipeValues =[],$grey = FALSE, $test = FA
 	$table->addRow($rsHeight); 
 	$table->addCell(null,$cellConfig)->addText($pipeNo, 'fsNormal', 'psCenterTable3');
 	$table->addCell(null,$cellConfig)->addText($pipeValues[1], 'fsNormal', 'psCenterTable3');
-	$table->addCell(null,$cellConfig)->addText($pipeValues[2], 'fsNormal', 'psCenterTable3');
-	$table->addCell(null,$cellConfig)->addText($pipeValues[3], 'fsNormal', 'psCenterTable3');
-	$table->addCell(null,$cellConfig)->addText($pipeValues[4], 'fsNormal', 'psCenterTable3');
-	$table->addCell(null,$cellConfig)->addText($pipeValues[5], 'fsNormal', 'psCenterTable3');
-	$table->addCell(null,$cellConfig)->addText($pipeValues[6], 'fsNormal', 'psCenterTable3');
+	$table->addCell(null,$cellConfig)->addText(goodNumberToString($pipeValues[2],3), 'fsNormal', 'psCenterTable3');
+	$table->addCell(null,$cellConfig)->addText(goodNumberToString($pipeValues[3],3,TRUE), 'fsNormal', 'psCenterTable3');
+	$table->addCell(null,$cellConfig)->addText(goodNumberToString($pipeValues[4]), 'fsNormal', 'psCenterTable3');
+	$table->addCell(null,$cellConfig)->addText(goodNumberToString($pipeValues[5],2), 'fsNormal', 'psCenterTable3');
+	$table->addCell(null,$cellConfig)->addText($maxCalcShear, 'fsNormal', 'psCenterTable3');
 	$table->addCell(null,$cellConfigTest)->addText($acutalShearPressure, 'fsNormal', 'psCenterTable3');
 	$table->addCell(null,$cellConfigTest)->addText($adjActualShearPressure, 'fsNormal', 'psCenterTable3');
 	$table->addCell(null,$cellConfig)->addText($pipeValues[7], 'fsNormal', 'psCenterTable3');
@@ -49,7 +50,7 @@ $tablePipeDataSummary->addCell(Converter::inchtotwip(.58),$csVbottomGrey)->addTe
 $tablePipeDataSummary->addCell(Converter::inchtotwip(.65),$csVbottomGrey)->addText("Grade", 'fsNormal', 'psCenterTable3');
 $tablePipeDataSummary->addCell(Converter::inchtotwip(.54),$csVbottomGrey)->addText("OD (in)", 'fsNormal', 'psCenterTable3');
 $tablePipeDataSummary->addCell(Converter::inchtotwip(.83),$csVbottomGrey)->addText("Wall Thickness (in)", 'fsNormal', 'psCenterTable3');
-$tablePipeDataSummary->addCell(Converter::inchtotwip(.77),$csVbottomGrey)->addText("Strength", 'fsNormal', 'psCenterTable3');
+$tablePipeDataSummary->addCell(Converter::inchtotwip(.77),$csVbottomGrey)->addText("Strength (psi)", 'fsNormal', 'psCenterTable3');
 $tablePipeDataSummary->addCell(Converter::inchtotwip(.72),$csVbottomGrey)->addText("Nominal Weight (ppf)", 'fsNormal', 'psCenterTable3');
 $tablePipeDataSummary->addCell(Converter::inchtotwip(.89),$csVbottomGrey)->addText("Max. Calculated Shear/Seal Pressure (psi)", 'fsNormal', 'psCenterTable3');
 $tablePipeDataSummary->addCell(Converter::inchtotwip(.75),$csVbottomGrey)->addText("Actual Shear Pressure (psi)", 'fsNormal', 'psCenterTable3');

@@ -152,6 +152,7 @@ $vAlignCell = ['valign' => 'center'];
 $csBottomBorder = ['borderBottomColor'=>'000000', 'borderBottomSize' => 1];
 $csVbottomGrey = ['valign' => 'bottom', 'bgColor' => '3A3B3D'];
 $csGrey = ['bgColor' => 'BFBFBF'];
+$csSpanRow = ['gridSpan' => 5, 'valign' => 'center', 'bgColor' => 'BFBFBF'];
 $csSpan2Good = ['gridSpan' => 2, 'valign' => 'center', 'bgColor' => 'c5e0b3'];
 
 //Titles

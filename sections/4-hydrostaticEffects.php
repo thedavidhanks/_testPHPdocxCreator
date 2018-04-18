@@ -2,15 +2,6 @@
 require_once 'vendor/autoload.php';
 use PhpOffice\PhpWord\Shared\Converter;
 
-function addTermCell($table, $term = '', $sub = ''){
-    global $vAlignCell;
-    
-    $trTerm=$table->addCell(null, $vAlignCell)->addTextRun('psCenterTight');
-    $trTerm->addText($term,'fsSize9');
-    $trTerm->addText($sub, 'fsNormalSub');
-    return $table;
-}
-
 function addSqInchCell($table){
     global $vAlignCell;
     
@@ -21,8 +12,6 @@ function addSqInchCell($table){
     return $table;
 }
 
-//Cell style
-$csSpanRow = ['gridSpan' => 5, 'valign' => 'center', 'bgColor' => 'BFBFBF'];
 
 $tableHSeffects = $sectionMainContent->addTable('tsPlain');
 $tableHSeffects->addRow($rsHeight);
@@ -94,7 +83,7 @@ $wellPressureShortName = $reportData->Rig->location === 'subsea' ? "MAWHP" : "MA
 $tableHSeffects->addCell(null,$vAlignCell)->addText($wellPressureName, 'fsSize9', 'psLeftTight');
 $tableHSeffects->addCell(null,$vAlignCell)->addText($wellPressureShortName, 'fsSize9', 'psCenterTight');
 $tableHSeffects->addCell(null, $csGrey);
-$tableHSeffects->addCell(null, $vAlignCell)->addText($reportData->Well->pressure, 'fsSize9', 'psCenterTight');
+$tableHSeffects->addCell(null, $vAlignCell)->addText(goodNumberToString($reportData->Well->pressure), 'fsSize9', 'psCenterTight');
 $tableHSeffects->addCell(null, $vAlignCell)->addText("psi", 'fsSize9', 'psCenterTight');
 
 //BOP Calculations for Subsea BOP
@@ -111,8 +100,8 @@ if($reportData->Rig->location == 'subsea'){
 	
 	//Pi, Increased Shear Pressure
 }else{
-	$tableHSeffects->addRow($rsHeight);
-	//Pi, Increased Shear Pressure due to MASP
+    $tableHSeffects->addRow($rsHeight);
+    //Pi, Increased Shear Pressure due to MASP
     $tableHSeffects->addCell(null, $vAlignCell)->addText("Increased Shear Pressure due to Pressure in Wellbore",'fsSize9', 'psLeftTight');
     addTermCell($tableHSeffects, 'P', 'i');
     $equationPi = $tableHSeffects->addCell(null, $vAlignCell)->addTextRun('psLeftTight');
