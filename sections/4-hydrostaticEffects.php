@@ -133,5 +133,5 @@ addTermCell($tableHSeffects, 'P', 'SEAL');
 $equationMSP = $tableHSeffects->addCell(null, $vAlignCell)->addTextRun('psLeftTight');
 $equationMSP->addText('MOPFLPS + P');
 $equationMSP->addText('i', 'fsNormalSub');
-$tableHSeffects->addCell(null,$vAlignCell)->addText($reportData->Well->minSealPressure, 'fsSize9', 'psCenterTight');
+$tableHSeffects->addCell(null,$vAlignCell)->addText($sealPressureStr, 'fsSize9', 'psCenterTight');
 $tableHSeffects->addCell(null, $vAlignCell)->addText("psi", 'fsSize9', 'psCenterTight');
