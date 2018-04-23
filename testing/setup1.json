@@ -60,10 +60,10 @@
             "name" : "Jolly Rodger",
             "location" : "surface"
         },
-		"pipeDataSummaryNotes" : [
-			"Calculated shear/seal pressure includes the greater of shearing or sealing pressures and is corrected for wellbore pressures.",
-			"Maximum yield strength ass"
-		],		
+        "pipeDataSummaryNotes" : [
+                "Calculated shear/seal pressure includes the greater of shearing or sealing pressures and is corrected for wellbore pressures.",
+                "Maximum yield strength assumes"
+        ],		
         "tubulars" : {
             "pipeXXXYY": {
                 "selectedMethod" : "Cameron",
@@ -98,8 +98,8 @@
                 "OperatingPressure" : "3540",
                 "area" : "4.2", 
                 "brkStrength" : "309750" ,
-				"actualShearPressure" : "1100",
-				"actAdjShearPressure" : "1455"
+		"actualShearPressure" : "1100",
+		"actAdjShearPressure" : "1455"
             },
             "pipeZTTY": {
                 "selectedMethod" : "Cameron",

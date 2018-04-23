@@ -12,7 +12,7 @@ foreach($pipesArray as $pipeData){  //see 3-pipeDataSummary for $pipesArray
         $pipeDiameterStr = goodNumberToString($pipeData->diameter,3,TRUE);
         $pipeWallStr = goodNumberToString($pipeData->wall,3);
 	if($TESTPIPE){
-		$sectionMainContent->addTitle('Test Pipe: ', 1);
+		$sectionMainContent->addTitle("Test Pipe: {$gradeName}, {$pipeDiameterStr}\" OD, {$pipeWallStr}\" Wall", 1);
         }else{$sectionMainContent->addTitle("Pipe No. {$pipeData->pipeNo}: {$gradeName}, {$pipeDiameterStr}\" OD, {$pipeWallStr}\" Wall", 1);}
         
 	$tablePipeCalculations = $sectionMainContent->addTable('tsPlain');
@@ -102,23 +102,35 @@ foreach($pipesArray as $pipeData){  //see 3-pipeDataSummary for $pipesArray
         $tablePipeCalculations->addCell(null, $vAlignCell)->addText('psi', 'fsNormal', 'psCenterTable3');
         if($TESTPIPE){
             //actual test pressure
+            $tablePipeCalculations->addRow($rsHeight);
+            $tablePipeCalculations->addCell(null, $vAlignCell)->addText("Actual Shearing Pressure - Recorded in Test Report", 'fsNormal', 'psLeftTable3');
+            addTermCell($tablePipeCalculations,"P","ACT");
+            $tablePipeCalculations->addCell(null,$csGrey);
+            $tablePipeCalculations->addCell(null, $vAlignCell)->addText(goodNumberToString($pipeData->actualShearPressure), 'fsNormal', 'psCenterTable3');
+            $tablePipeCalculations->addCell(null, $vAlignCell)->addText('psi', 'fsNormal', 'psCenterTable3');
             //adjusted test pressure
+            $tablePipeCalculations->addRow($rsHeight);
+            $tablePipeCalculations->addCell(null, $vAlignCell)->addText("Pact adjusted for Hydrostatic Effects of Wellbore and Subsea Head", 'fsNormal', 'psLeftTable3');
+            addTermCell($tablePipeCalculations,"P","ADJ");
+            $tablePipeCalculations->addCell(null,$vAlignCell)->addText("Pact + Pi", 'fsNormal', 'psLeftTable3');
+            $tablePipeCalculations->addCell(null, $vAlignCell)->addText(goodNumberToString($pipeData->actualShearPressure), 'fsNormal', 'psCenterTable3');
+            $tablePipeCalculations->addCell(null, $vAlignCell)->addText('psi', 'fsNormal', 'psCenterTable3');
         }else{
-        $tablePipeCalculations->addRow($rsHeight);
-        $tablePipeCalculations->addCell(null, $vAlignCell)->addText("Is the calculated pressure less than or equal to 90% of the max operating pressure of the BOP?", 'fsNormal', 'psLeftTable3');
-        $tablePipeCalculations->addCell(null,$csGrey);
-        $tablePipeCalculations->addCell(null,$csGrey);
-        $tablePipeCalculations->addCell(null,$csSpan2Good);
-        $tablePipeCalculations->addRow($rsHeight);
-        $tablePipeCalculations->addCell(null, $vAlignCell)->addText("Is the calculated pressure less than or equal to the supply pressure?", 'fsNormal', 'psLeftTable3');
-        $tablePipeCalculations->addCell(null,$csGrey);
-        $tablePipeCalculations->addCell(null,$csGrey);
-        $tablePipeCalculations->addCell(null,$csSpan2Good);
-        $tablePipeCalculations->addRow($rsHeight);
-        $tablePipeCalculations->addCell(null, $vAlignCell)->addText("Is the calculated pressure less than or equal to the calculated pressure of the test pipe?", 'fsNormal', 'psLeftTable3');
-        $tablePipeCalculations->addCell(null,$csGrey);
-        $tablePipeCalculations->addCell(null,$csGrey);
-        $tablePipeCalculations->addCell(null,$csSpan2Good);
+            $tablePipeCalculations->addRow($rsHeight);
+            $tablePipeCalculations->addCell(null, $vAlignCell)->addText("Is the calculated pressure less than or equal to 90% of the max operating pressure of the BOP?", 'fsNormal', 'psLeftTable3');
+            $tablePipeCalculations->addCell(null,$csGrey);
+            $tablePipeCalculations->addCell(null,$csGrey);
+            $tablePipeCalculations->addCell(null,$csSpan2Good);
+            $tablePipeCalculations->addRow($rsHeight);
+            $tablePipeCalculations->addCell(null, $vAlignCell)->addText("Is the calculated pressure less than or equal to the supply pressure?", 'fsNormal', 'psLeftTable3');
+            $tablePipeCalculations->addCell(null,$csGrey);
+            $tablePipeCalculations->addCell(null,$csGrey);
+            $tablePipeCalculations->addCell(null,$csSpan2Good);
+            $tablePipeCalculations->addRow($rsHeight);
+            $tablePipeCalculations->addCell(null, $vAlignCell)->addText("Is the calculated pressure less than or equal to the calculated pressure of the test pipe?", 'fsNormal', 'psLeftTable3');
+            $tablePipeCalculations->addCell(null,$csGrey);
+            $tablePipeCalculations->addCell(null,$csGrey);
+            $tablePipeCalculations->addCell(null,$csSpan2Good);
         }
 	$sectionMainContent->addPageBreak();
 }
