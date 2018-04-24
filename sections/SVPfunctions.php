@@ -47,7 +47,3 @@ function addTermCell($table, $term = '', $sub = ''){
     $trTerm->addText($sub, 'fsNormalSub');
     return $table;
 }
-
-//print goodNumberToString("12345");
-//print goodNumberToString(0.25,3,TRUE);
-//print goodNumberToString(.25);

@@ -173,7 +173,7 @@ $sectionMainContent->addPageBreak();
 require_once 'sections/5-pipeDetailCalcs.php';
 
 //References
-$sectionMainContent->addTitle('References', 1);
+require_once 'sections/6-references.php';
 $sectionMainContent->addPageBreak();
 
 //Appendix A

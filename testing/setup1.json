@@ -1,156 +1,189 @@
-    {     
-        "author": "David Hanks",
-        "company" : "OTC Solutions",
-        "docDescription" : "",
-        "lastModifier" : "",
-        "reportType" : "Shear Verification Package",
-        "reportSubType" : "30 CFR §250.732 (a),(b)",
-        "clientFullLegal" : "A Happy Client, Inc.",
-        "clientShortend" : "OES",
-        "Well": {
-            "name" : "SS001018398",
-            "location" : "Alpha Bravo 123",
-            "pressure" : "12345",
-			"waterDepth" : "11,200",
-			"closingPressureAdjustment": 230,
-			"minSealPressure" : 430
+{     
+    "author": "David Hanks",
+    "company" : "OTC Solutions",
+    "docDescription" : "",
+    "lastModifier" : "",
+    "reportType" : "Shear Verification Package",
+    "reportSubType" : "30 CFR §250.732 (a),(b)",
+    "clientFullLegal" : "A Happy Client, Inc.",
+    "clientShortend" : "OES",
+    "Well": {
+        "name" : "SS001018398",
+        "location" : "Alpha Bravo 123",
+        "pressure" : "12345",
+                    "waterDepth" : "11,200",
+                    "closingPressureAdjustment": 230,
+                    "minSealPressure" : 430
+    },
+    "BOP": {
+        "MOPFLPS" : "200",
+        "OEM": "Cameron",
+        "closingArea" : "224.5",
+        "openingArea" : "260.5",
+        "closingRatio" : "17.9",
+        "model" : "Type U, 13-3M/10M, SB",
+        "trArea" : "0",
+        "supplyPressure" : "3000",
+        "operatorRatedPressure" : "3000"
+    },
+    "docNumber": "SBS1_COX_180307_SVP",
+    "docRev": 0,
+    "exceptions": [1,2],
+    "calculationMethods": [1],
+    "revisions" : {
+        "00" : {
+            "date" : "2016-01-01",
+            "descShort" : "Initial Release",
+            "descLong" : "Initial Release",
+            "preparedBy" : "David Hanks",
+            "checkedBy" : "Steve Ronan",
+            "approvedBy" : "David Hanks"
         },
-        "BOP": {
-            "MOPFLPS" : "200",
-            "OEM": "Cameron",
-            "closingArea" : "224.5",
-            "openingArea" : "260.5",
-            "closingRatio" : "17.9",
-            "model" : "Type U, 13-3M/10M, SB",
-            "trArea" : "0",
-            "supplyPressure" : "3000",
-            "operatorRatedPressure" : "3000"
-        },
-        "docNumber": "SBS1_COX_180307_SVP",
-        "docRev": 0,
-        "exceptions": [1,2],
-        "calculationMethods": [1],
-        "revisions" : {
-            "00" : {
-                "date" : "2016-01-01",
-                "descShort" : "Initial Release",
-                "descLong" : "Initial Release",
+        "01" : {
+                "date" : "2016-02-20",
+                "descShort" : "Fixed it",
+                "descLong" : "Something was really, really wrong.  It had to go.  It's all better now.",
                 "preparedBy" : "David Hanks",
                 "checkedBy" : "Steve Ronan",
                 "approvedBy" : "David Hanks"
-            },
-            "01" : {
-                    "date" : "2016-02-20",
-                    "descShort" : "Fixed it",
-                    "descLong" : "Something was really, really wrong.  It had to go.  It's all better now.",
-                    "preparedBy" : "David Hanks",
-                    "checkedBy" : "Steve Ronan",
-                    "approvedBy" : "David Hanks"
-            },
-            "02": {
-                    "date" : "2016-02-20",
-                    "descShort" : "Fixed it",
-                    "descLong" : "Something was kinda wrong.  We tweaked it a bit.  It's all better now.",
-                    "preparedBy" : "This Guy",
-                    "checkedBy" : "That Guy",
-                    "approvedBy" : "Boss Man"
-            }
         },
-        "Rig" : {
-            "name" : "Jolly Rodger",
-            "location" : "surface"
+        "02": {
+                "date" : "2016-02-20",
+                "descShort" : "Fixed it",
+                "descLong" : "Something was kinda wrong.  We tweaked it a bit.  It's all better now.",
+                "preparedBy" : "This Guy",
+                "checkedBy" : "That Guy",
+                "approvedBy" : "Boss Man"
+        }
+    },
+    "Rig" : {
+        "name" : "Jolly Rodger",
+        "location" : "surface"
+    },
+    "pipeDataSummaryNotes" : [
+            "Calculated shear/seal pressure includes the greater of shearing or sealing pressures and is corrected for wellbore pressures.",
+            "Maximum yield strength assumes"
+    ],		
+    "tubulars" : {
+        "pipeXXXYY": {
+            "selectedMethod" : "Cameron",
+            "strengthType" : "grade",
+            "grade" : "E75",
+            "evalStrength" : "105000",
+            "ppf" : "13.87",
+            "testPipe": false,
+            "type": "pipe",
+            "diameter": "5",
+            "wall": ".25",
+            "pipeNo" : 1,
+            "C3" : "0.33",
+            "CamForce" : "480596",
+            "OperatingPressure" : "2140.73942",
+            "area" : "3.73", 
+            "brkStrength" : "279750"
         },
-        "pipeDataSummaryNotes" : [
-                "Calculated shear/seal pressure includes the greater of shearing or sealing pressures and is corrected for wellbore pressures.",
-                "Maximum yield strength assumes"
-        ],		
-        "tubulars" : {
-            "pipeXXXYY": {
-                "selectedMethod" : "Cameron",
-                "strengthType" : "grade",
-                "grade" : "E75",
-                "evalStrength" : "105000",
-                "ppf" : "13.87",
-                "testPipe": false,
-                "type": "pipe",
-                "diameter": "5",
-                "wall": ".25",
-                "pipeNo" : 1,
-                "C3" : "0.33",
-                "CamForce" : "480596",
-                "OperatingPressure" : "2140.73942",
-                "area" : "3.73", 
-                "brkStrength" : "279750"
-            },
-            "pipeZZYY": {
-                "selectedMethod" : "Cameron",
-                "strengthType" : "grade",
-                "grade" : "C90",
-                "evalStrength" : "105000",
-                "ppf" : "15.5",
-                "testPipe": true,
-                "type": "pipe",
-                "diameter": "6.625",
-                "wall": ".361",
-                "pipeNo" : 0,
-                "C3" : "0.33",
-                "CamForce" : "500596",
-                "OperatingPressure" : "3540",
-                "area" : "4.2", 
-                "brkStrength" : "309750" ,
-		"actualShearPressure" : "1100",
-		"actAdjShearPressure" : "1455"
-            },
-            "pipeZTTY": {
-                "selectedMethod" : "Cameron",
-                "strengthType" : "grade",
-                "grade" : "S135",
-                "evalStrength" : "105000",
-                "ppf" : "15.5",
-                "testPipe": false,
-                "type": "pipe",
-                "diameter": "5.5",
-                "wall": ".361",
-                "pipeNo" : 3,
-                "C3" : "0.33",
-                "CamForce" : "500596",
-                "OperatingPressure" : "3540",
-                "area" : "4.2", 
-                "brkStrength" : "309750" 
-            },
-            "pipeABABB": {
-                "selectedMethod" : "Cameron",
-                "strengthType" : "grade",
-                "grade" : "Z140",
-                "evalStrength" : "105000",
-                "ppf" : "13.87",
-                "testPipe": false,
-                "type": "pipe",
-                "diameter": "3.5",
-                "wall": ".25",
-                "pipeNo" : 2,
-                "C3" : "0.33",
-                "CamForce" : "480596",
-                "OperatingPressure" : "2140.73942",
-                "area" : "3.73", 
-                "brkStrength" : "279750"
-            },
-            "pipeDADDA": {
-                "selectedMethod" : "Cameron",
-                "strengthType" : "grade",
-                "grade" : "Z140",
-                "evalStrength" : "105000",
-                "ppf" : "13.87",
-                "testPipe": false,
-                "type": "pipe",
-                "diameter": "3.5",
-                "wall": ".25",
-                "pipeNo" : "5",
-                "C3" : "0.33",
-                "CamForce" : "480596",
-                "OperatingPressure" : "2140.73942",
-                "area" : "3.73", 
-                "brkStrength" : "279750"
-            }
+        "pipeZZYY": {
+            "selectedMethod" : "Cameron",
+            "strengthType" : "grade",
+            "grade" : "C90",
+            "evalStrength" : "105000",
+            "ppf" : "15.5",
+            "testPipe": true,
+            "type": "pipe",
+            "diameter": "6.625",
+            "wall": ".361",
+            "pipeNo" : 0,
+            "C3" : "0.33",
+            "CamForce" : "500596",
+            "OperatingPressure" : "3540",
+            "area" : "4.2", 
+            "brkStrength" : "309750" ,
+            "actualShearPressure" : "1100",
+            "actAdjShearPressure" : "1455"
+        },
+        "pipeZTTY": {
+            "selectedMethod" : "Cameron",
+            "strengthType" : "grade",
+            "grade" : "S135",
+            "evalStrength" : "105000",
+            "ppf" : "15.5",
+            "testPipe": false,
+            "type": "pipe",
+            "diameter": "5.5",
+            "wall": ".361",
+            "pipeNo" : 3,
+            "C3" : "0.33",
+            "CamForce" : "500596",
+            "OperatingPressure" : "3540",
+            "area" : "4.2", 
+            "brkStrength" : "309750" 
+        },
+        "pipeABABB": {
+            "selectedMethod" : "Cameron",
+            "strengthType" : "grade",
+            "grade" : "Z140",
+            "evalStrength" : "105000",
+            "ppf" : "13.87",
+            "testPipe": false,
+            "type": "pipe",
+            "diameter": "3.5",
+            "wall": ".25",
+            "pipeNo" : 2,
+            "C3" : "0.33",
+            "CamForce" : "480596",
+            "OperatingPressure" : "2140.73942",
+            "area" : "3.73", 
+            "brkStrength" : "279750"
+        },
+        "pipeDADDA": {
+            "selectedMethod" : "Cameron",
+            "strengthType" : "grade",
+            "grade" : "Z140",
+            "evalStrength" : "105000",
+            "ppf" : "13.87",
+            "testPipe": false,
+            "type": "pipe",
+            "diameter": "3.5",
+            "wall": ".25",
+            "pipeNo" : "5",
+            "C3" : "0.33",
+            "CamForce" : "480596",
+            "OperatingPressure" : "2140.73942",
+            "area" : "3.73", 
+            "brkStrength" : "279750"
+        }
+    },
+    "references": {
+        "R1" : {
+            "Title": "Specification for Dill Pipe, API Specification 5DP",
+            "Author" : "American Petroleum Institute",
+            "Edition" : "First",
+            "Date" : "Aug. 2009",
+            "ReaffirmedDate" : "April 2015"
+        },
+        "R2" : {
+            "Title": "Specification for Corrosion-resistant Alloy Seamless Tubes for Use as Casing, Tubing, and Coupling Stock, API Specification 5CRA",
+            "Author" : "American Petroleum Institute",
+            "Edition" : "First",
+            "Date" : "Feb. 2010",
+            "ReaffirmedDate" : "April 2015"
+        },
+        "R3" : {
+            "Title": "Shearing Capabilities of Cameron Shear Rams, Engineering Bulletin EB 702D",
+            "Revision" : "F1",
+            "Author" : "Cameron, A Schlumberger Company",
+            "Date" : "Jan. 23, 2017"
+        },
+        "R4" : {
+            "Title": "Minimum Operating Pressure for Low Pressure Sealing (MOPFLPS) for Cameron BOPs, Engineering Bulletin EB 963 D",
+            "Revision" : "A2",
+            "Author" : "Cameron, A Schlumberger Company",
+            "Date" : "July 6, 2016"
+        },
+        "R5" : {
+            "Title": "Shear Ram Capabilities Study for U.S. Mineral Management Services (BSEE TAP 463)",
+            "Author" : "West Engineering Services",
+            "Date" : "September 2004"
         }
     }
+}

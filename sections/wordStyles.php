@@ -13,6 +13,10 @@ $phpWord->addFontStyle('fsNormalBold',[
         'basedOn' => 'fsNormal',
         'bold' => TRUE
 ]);
+$phpWord->addFontStyle('fsNormalItalics',[
+        'basedOn' => 'fsNormal',
+        'italic' => TRUE
+]);
 $phpWord->addFontStyle('fsNormalSub',[
         'basedOn' => 'fsNormal',
         'subScript' => TRUE
